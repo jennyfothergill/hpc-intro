@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
       - name: Install basic requirements
@@ -62,9 +62,10 @@ jobs:
           - Norway_SIGMA2_SAGA_slurm
           - UCL_Myriad_sge
           - Magic_Castle_EESSI_slurm
+          - BSU_Borah_slurm
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
       - name: Install basic requirements
