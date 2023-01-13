@@ -89,35 +89,27 @@ system files and change as you install new software or upgrade your OS.
 > These differ in both the amount of space allocated and whether or not they
 > are backed up.
 >
-> * __Home__ -- often a _network filesystem_, data stored here is available
->   throughout the HPC system, and often backed up periodically. Files stored
->   here are typically slower to access, the data is actually stored on another
->   computer and is being transmitted and made available over the network!
-> * __Scratch__ -- typically faster than the networked Home directory, but not
->   usually backed up, and should not be used for long term storage.
-> * __Work__ -- sometimes provided as an alternative to Scratch space, Work is
->   a fast file system accessed over the network. Typically, this will have
->   higher performance than your home directory, but lower performance than
->   Scratch; it may not be backed up. It differs from Scratch space in that
->   files in a work file system are not automatically deleted for you: you must
->   manage the space yourself.
+> * __Home__ -- a _network filesystem_, data stored here is available
+>   throughout the HPC system, and is backed up periodically; however, users
+>   are limited on how much they can store.
+> * __Scratch__ -- also a _network filesystem_, which has more space available 
+>   than the Home directory, but it is not backed up, and should not be used 
+>   for long term storage.
 {: .callout}
 
 ## Nodes
 
-Individual computers that compose a cluster are typically called _nodes_
-(although you will also hear people call them _servers_, _computers_ and
-_machines_). On a cluster, there are different types of nodes for different
-types of tasks. The node where you are right now is called the _login node_,
-_head node_, _landing pad_, or _submit node_. A login node serves as an access
-point to the cluster.
+Recall that the individual computers that compose a cluster are called _nodes_.
+On a cluster, there are different types of nodes for different types of tasks. 
+The node where you are right now is called the _login node_. A login node 
+serves as the access point to the cluster _for all users_.
 
 As a gateway, the login node should not be used for time-consuming or
-resource-intensive tasks. You should be alert to this, and check with your
-site's operators or documentation for details of what is and isn't allowed. It
-is well suited for uploading and downloading files, setting up software, and
-running tests. Generally speaking, in these lessons, we will avoid running jobs
-on the login node.
+resource-intensive tasks as consuming the cpu or memory of the login node 
+would slow down the cluster for everyone! It is well suited for uploading 
+and downloading files, minor software setup, and submitting jobs to the 
+scheduler. Generally speaking, in these lessons, we will avoid running 
+jobs on the login node.
 
 Who else is logged in to the login node?
 
@@ -304,7 +296,7 @@ connect to a shared, remote fileserver or cluster of servers.
 {: .callout}
 
 With all of this in mind, we will now cover how to talk to the cluster's
-scheduler, and use it to start running our scripts and programs!
+scheduler and use it to start running our scripts and programs!
 
 {% include links.md %}
 
