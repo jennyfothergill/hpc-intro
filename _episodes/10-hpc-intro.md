@@ -49,19 +49,9 @@ problems in parallel__.
 
 ## Jargon Busting Presentation
 
-node, core, 
-serial, parallel
-hpc, cluster, supercomputer
-server
-
-
 Open the [HPC Jargon Buster]({{ site.url }}{{ site.baseurl }}/files/jargon.html#p1)
 in a new tab. To present the content, press `C` to open a **c**lone in a
 separate window, then press `P` to toggle **p**resentation mode.
-
-Individual computers that compose a cluster are typically called _nodes_
-(although you will also hear people call them _servers_, _computers_ and
-_machines_). 
 
 {% include links.md %}
 
