@@ -100,6 +100,16 @@ on though so we will adopt the following convention:
 When your account is created Research Computing assigns you a password. The 
 first thing you should do upon logging in is change it!
 
+You can change your password by entering the `passwd` command as shown below:
+
+```
+{{ site.remote.prompt }} passwd
+```
+{: .language-bash}
+
+After entering the command, you will be prompted for your current password,
+the new password, and finally confirmation of the new password.
+
 > ## Considerations for Passwords
 >
 > When prompted, enter a strong password that you will remember. There are two
@@ -110,7 +120,8 @@ first thing you should do upon logging in is change it!
 >    that passwords are case sensitive.
 > 2. Use a password manager and its built-in password generator with all
 >    character classes, 25 characters or longer. [KeePass][keepass] and
->    [BitWarden][bitwarden] are two good options.
+>    [BitWarden][bitwarden] are two good options. This is also a good option 
+>    for storing passwords.
 {: .callout}
 
 ## Looking Around Your Remote Home
