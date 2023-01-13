@@ -4,13 +4,10 @@ title: Setup
 root: .
 ---
 
-There are several pieces of software you will wish to install before the
-workshop. Though installation help will be provided at the workshop, we
-recommend that these tools are installed (or at least downloaded) beforehand.
-
-1. [A terminal application or command-line interface](
-   #where-to-type-commands-how-to-open-a-new-shell)
-2. [A Secure Shell application](#ssh-for-secure-connections)
+Before the workshop, it is recommended to install or locate a terminal 
+application on with ssh. Though installation help will be provided at 
+the workshop, we recommend that these tools are installed (or at least 
+downloaded) beforehand.
 
 > ## Bash and SSH
 >
@@ -32,45 +29,9 @@ on a server.
 ### Unix Shells on Windows
 
 Computers with Windows operating systems do not automatically have a Unix Shell
-program installed. In this lesson, we encourage you to use an emulator included
-in Git for Windows, which gives you access to both Bash shell commands and Git.
-If you have attended a Software Carpentry workshop session, it is likely you
-have already received instructions on how to install Git for Windows.
-
-Once installed, you can open a terminal by running the program Git Bash from
-the Windows start menu.
-
-#### Shell Programs for Windows
-
-* [Git for Windows][git4win] -- *Recommended*
-* [Windows Subsystem for Linux][ms-wsl] -- advanced option for Windows 10
-
-> ## Alternatives to Git for Windows
->
-> Other solutions are available for running Bash commands on Windows. There is
-> now a Bash shell command-line tool available for Windows 10. Additionally,
-> you can run Bash commands on a remote computer or server that already has a
-> Unix Shell, from your Windows machine. This can usually be done through a
-> Secure Shell (SSH) client. One such client available for free for Windows
-> computers is PuTTY. See the reference below for information on installing and
-> using PuTTY, using the Windows 10 command-line tool, or installing and using
-> a Unix/Linux emulator.
->
-> For advanced users, you may choose one of the following alternatives:
->
-> * Install the [Windows Subsystem for Linux][ms-wsl]
-> * Use the Windows [PowerShell][ms-shell]
-> * Read up on [Using a Unix/Linux emulator][unix-emulator] (Cygwin) or Secure
->   Shell (SSH) client (PuTTY)
->
-> > ## Warning
-> >
-> > Commands in the Windows Subsystem for Linux (WSL), PowerShell, or Cygwin
-> > may differ slightly from those shown in the lesson or presented in the
-> > workshop. Please ask if you encounter such a mismatch -- you're
-> > probably not alone.
-> {: .challenge}
-{: .discussion}
+program installed. We recommend using [MobaXterm](https://mobaxterm.mobatek.net) 
+Home Edition for this lesson as it can be used to run local shell commands and
+access the cluster via ssh.
 
 ### Unix Shell on macOS
 
@@ -81,8 +42,8 @@ To open Terminal, try one or both of the following:
 
 * In Finder, select the Go menu, then select Utilities. Locate Terminal in the
   Utilities folder and open it.
-* Use the Mac ‘Spotlight’ computer search function. Search for: `Terminal` and
-  press <kbd>Return</kbd>.
+* Use the Mac ‘Spotlight’ computer search function (using <kbd>Command</kbd> + 
+  <kbd>Space</kbd>). Search for: `Terminal` and press <kbd>Return</kbd>.
 
 For an introduction, see [How to Use Terminal on a Mac][mac-terminal].
 
@@ -98,38 +59,6 @@ applications menu or the search bar.
 
 If none of the options above address your circumstances, try an online search
 for: `Unix shell [your operating system]`.
-
-## SSH for Secure Connections
-
-All students should have an SSH client installed. SSH is a tool that allows us
-to connect to and use a remote computer as our own.
-
-### SSH for Windows
-
-Git for Windows comes with SSH preinstalled: you do not have to do anything.
-
-> ## GUI Support for Windows
->
-> If you know that the software you will be running on the cluster requires a
-> graphical user interface (a GUI window needs to open for the application to
-> run properly), please install [MobaXterm](https://mobaxterm.mobatek.net) Home
-> Edition.
-{: .discussion}
-
-### SSH for macOS
-
-macOS comes with SSH pre-installed: you do not have to do anything.
-
-> ## GUI Support for macOS
->
-> If you know that the software you will be running requires a graphical user
-> interface, please install [XQuartz](https://www.xquartz.org).
-{: .discussion}
-
-### SSH for Linux
-
-Linux comes with SSH and X window support preinstalled: you do not have to do
-anything.
 
 <!-- links -->
 [git4win]: https://gitforwindows.org/
