@@ -20,7 +20,7 @@ keypoints:
 
 ## Job Scheduler
 
-An HPC system might have thousands of nodes and thousands of users. How do we
+An HPC system might have thousands of nodes and users. How do we
 decide who gets what and when? How do we ensure that a task is run with the
 resources it needs? This job is handled by a special piece of software called
 the _scheduler_. On an HPC system, the scheduler manages which jobs run where
@@ -29,7 +29,7 @@ and when.
 The following illustration compares these tasks of a job scheduler to a waiter
 in a restaurant. If you can relate to an instance where you had to wait for a
 while in a queue to get in to a popular restaurant, then you may now understand
-why sometimes your job do not start instantly as in your laptop.
+why sometimes your job does not start instantly as in your laptop.
 
 {% include figure.html max-width="75%" caption=""
    file="/fig/restaurant_queue_manager.png"
@@ -64,17 +64,32 @@ manner. Our shell script will have three parts:
 * On the last line, we'll invoke the `hostname` command, which will print the
   name of the machine the script is run on.
 
+First open your new script in a text editor:
+
 ```
-{{ site.remote.prompt }} nano example-job.sh
+{{ site.remote.prompt }} vim example-job.sh
 ```
 {: .language-bash}
+
+> ## A note about Vim
+>
+> Vim is a command line text editor with lots of useful features. You can start
+> a tutorial by typing `vimtutor` in your terminal. For now though, we'll use the
+> following vim shortcuts:
+> 
+> <kbd>I</kbd> : enter insert mode. This will allow you to type to enter text.
+> <kbd>Esc</kbd> : enter command mode. This will allow you type other commands.
+> (while in command mode) `:w` : save the file.
+> (while in command mode) `:q` : exit vim.
+{: .callout}
+
 ```
 {{ site.remote.bash_shebang }}
 
 echo -n "This script is running on "
 hostname
 ```
-{: .output}
+{: .source}
 
 > ## Creating Our Test Job
 >
