@@ -201,7 +201,7 @@ connect to a shared, remote fileserver or cluster of servers.
 > > * Run system utilities
 > >   ```
 > >   {{ site.local.prompt }} nproc --all
-> >   {{ site.local.prompt }} free -m
+> >   {{ site.local.prompt }} free -h
 > >   ```
 > >   {: .language-bash}
 > >
@@ -212,9 +212,9 @@ connect to a shared, remote fileserver or cluster of servers.
 > >   ```
 > >   {: .language-bash}
 > >
-> > * Run system monitor
+> > * (Or on mac) Run system_profiler
 > >   ```
-> >   {{ site.local.prompt }} htop
+> >   {{ site.local.prompt }} system_profiler SPHardwareDataType
 > >   ```
 > >   {: .language-bash}
 > {: .solution}
@@ -229,7 +229,7 @@ connect to a shared, remote fileserver or cluster of servers.
 > > ```
 > > {{ site.local.prompt }} ssh {{ site.remote.user }}@{{ site.remote.login }}
 > > {{ site.remote.prompt }} nproc --all
-> > {{ site.remote.prompt }} free -m
+> > {{ site.remote.prompt }} free -h
 > > ```
 > > {: .language-bash}
 > >
