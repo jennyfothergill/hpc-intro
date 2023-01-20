@@ -97,7 +97,7 @@ on though so we will adopt the following convention:
 
 ## Changing Your Password
 
-When your account is created Research Computing assigns you a password. The 
+When your account is created, Research Computing assigns you a password. The 
 first thing you should do upon logging in is change it!
 
 You can change your password by entering the `passwd` command as shown below:
