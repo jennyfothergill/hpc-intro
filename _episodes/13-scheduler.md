@@ -32,7 +32,7 @@ while in a queue to get in to a popular restaurant, then you may now understand
 why sometimes your job do not start instantly as in your laptop.
 
 {% include figure.html max-width="75%" caption=""
-   file="/fig/restaurant_queue_manager.svg"
+   file="/fig/restaurant_queue_manager.png"
    alt="Compare a job scheduler to a waiter in a restaurant" %}
 
 The scheduler used in this lesson is {{ site.sched.name }}. Although
