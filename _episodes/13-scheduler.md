@@ -11,7 +11,7 @@ objectives:
 - "Submit a simple script to the cluster."
 - "Monitor the execution of jobs using command line tools."
 - "Inspect the output and error files of your jobs."
-- "Find the right place to put large datasets on the cluster."
+- "Use compute nodes interactively for resource intensive tasks."
 keypoints:
 - "The scheduler handles how compute resources are shared between users."
 - "A job is just a shell script."
