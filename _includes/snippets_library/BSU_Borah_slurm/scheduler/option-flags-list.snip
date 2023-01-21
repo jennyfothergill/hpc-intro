@@ -1,5 +1,8 @@
-* `--ntasks=<ntasks>` or `-n <ntasks>`: How many CPU cores does your job need,
-  in total?
+* `--cpus-per-task=<ncpus>` or `-c <ncpus>`: How many CPU cores does each task 
+  need? (Shared memory parallelism)
+
+* `--ntasks=<ntasks>` or `-n <ntasks>`: How many tasks will your job use? 
+  Useful for applications using _distributed parallelism_, e.g., mpi.
 
 * `--time <days-hours:minutes:seconds>` or `-t <days-hours:minutes:seconds>`:
   How much real-world time (walltime) will your job take to run? The `<days>`
