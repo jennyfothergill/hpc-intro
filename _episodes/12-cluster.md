@@ -1,6 +1,6 @@
 ---
 title: "Exploring Remote Resources"
-teaching: 25
+teaching: 20
 exercises: 10
 questions:
 - "How does my local computer compare to the remote systems?"
@@ -121,18 +121,6 @@ Who else is logged in to the login node?
 This may show only your user ID, but there are likely several other people
 (including fellow learners) connected right now.
 
-> ## Dedicated Transfer Nodes
->
-> If you want to transfer larger amounts of data to or from the cluster, some
-> systems offer dedicated nodes for data transfers only. The motivation for
-> this lies in the fact that larger data transfers should not obstruct
-> operation of the login node for anybody else. Check with your cluster's
-> documentation or its support team if such a transfer node is available. As a
-> rule of thumb, consider all transfers of a volume larger than 500 MB to 1 GB
-> as large. But these numbers change, e.g., depending on the network connection
-> of yourself and of your cluster or other factors.
-{: .callout}
-
 The real work on a cluster gets done by the _compute_ (or _worker_) _nodes_.
 compute nodes come in many shapes and sizes, but generally are dedicated to long
 or hard tasks that require a lot of computational resources.
@@ -184,7 +172,7 @@ connect to a shared, remote fileserver or cluster of servers.
 > personal computer.
 >
 > Note that, if you're logged in to the remote computer cluster, you need to
-> log out first. To do so, type `Ctrl+d` or `exit`:
+> log out first. To do so, type <kbd>Ctrl</kbd>+<kbd>d</kbd> or `exit`:
 >
 > ```
 > {{ site.remote.prompt }} exit
