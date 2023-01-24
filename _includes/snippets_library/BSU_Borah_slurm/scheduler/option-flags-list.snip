@@ -12,6 +12,9 @@
   megabytes? You can also specify gigabytes using by adding a little "g"
   afterwards (example: `--mem=5g`)
 
+* `--gres=gpu:<ngpu>`: How many gpus does your job need? Make sure you are 
+  submitting to a partition with gpus, e.g. `--partition=gpu` or `--partition=shortgpu`.
+
 * `--nodes=<nnodes>` or `-N <nnodes>`: How many separate machines does your job
   need to run on? Note that if you set `ntasks` to a number greater than what
   one machine can offer, {{ site.sched.name }} will set this value
