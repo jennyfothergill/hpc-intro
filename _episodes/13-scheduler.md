@@ -1,6 +1,6 @@
 ---
 title: "Scheduler Fundamentals"
-teaching: 45
+teaching: 35
 exercises: 30
 questions:
 - "What is a scheduler and why does a cluster need one?"
