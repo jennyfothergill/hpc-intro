@@ -65,8 +65,8 @@ episode_order:
   - 10-hpc-intro
   - 11-connecting
   - 12-cluster
-  - 01-break
   - 13-scheduler
+  - 01-break
   - 14-modules
   - 15-transferring-files
   - 18-responsibility
