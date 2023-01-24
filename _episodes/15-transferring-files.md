@@ -19,10 +19,9 @@ computing resources using CLI and GUI utilities, a few of which we will cover.
 ## Download Files From the Internet
 
 One of the most straightforward ways to download files is to use either `curl`
-or `wget`. One of these is usually installed in most Linux shells, on Mac OS
-terminal and in GitBash. Any file that can be downloaded in your web browser
-through a direct link can be downloaded using `curl -O` or `wget`. This is a
-quick way to download datasets or source code.
+or `wget`. Any file that can be downloaded in your web browser through a direct 
+link can be downloaded using `curl -O` or `wget`. This is a quick way to 
+download datasets or source code.
 
 The syntax for these commands is: `curl -O https://some/link/to/a/file`
 and `wget https://some/link/to/a/file`. Try it out by downloading
