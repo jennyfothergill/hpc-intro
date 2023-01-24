@@ -91,33 +91,6 @@ remote computer. We can leave it at that if we don't care where the file goes.
 > {: .solution}
 {: .challenge}
 
-Most computer clusters are protected from the open internet by a _firewall_.
-This means that the `curl` command will fail, as an address outside the
-firewall is unreachable from the inside. To get around this, run the `curl` or
-`wget` command from your local machine to download the file, then use the `scp`
-command to upload it to the cluster.
-
-> ## Why Not Download on {{ site.remote.name }} Directly?
->
-> Try downloading the file directly. Note that it may well fail, and that's
-> OK!
->
-> > ## Commands
-> >
-> > ```
-> > {{ site.local.prompt }} ssh {{ site.remote.user }}@{{ site.remote.login }}
-> > {{ site.remote.prompt }} curl -O {{ site.url }}{{ site.baseurl }}/files/hpc-intro-data.tar.gz
-> > or
-> > {{ site.remote.prompt }} wget {{ site.url }}{{ site.baseurl }}/files/hpc-intro-data.tar.gz
-> > ```
-> > {: .language-bash}
-> {: .solution}
->
-> Did it work? If not, what does the terminal output tell you about what
-> happened?
-> {: .challenge}
-{: .discussion}
-
 To copy a whole directory, we add the `-r` flag, for "**r**ecursive": copy the
 item specified, and every item below it, and every item below those... until it
 reaches the bottom of the directory tree rooted at the folder name you
@@ -199,34 +172,6 @@ A trailing slash on the target directory is optional, and has no effect for
 > ```
 > {: .language-bash}
 {: .callout}
-
-All file transfers using the above methods use SSH to encrypt data sent through
-the network. So, if you can connect via SSH, you will be able to transfer
-files. By default, SSH uses network port 22. If a custom SSH port is in use,
-you will have to specify it using the appropriate flag, often `-p`, `-P`, or
-`--port`. Check `--help` or the `man` page if you're unsure.
-
-> ## Change the Rsync Port
->
-> Say we have to connect `rsync` through port 768 instead of 22. How would we
-> modify this command?
->
-> ```
-> {{ site.local.prompt }} rsync test.txt {{ site.remote.user }}@{{ site.remote.login }}:
-> ```
-> {: .language-bash}
->
-> > ## Solution
-> >
-> > ```
-> > {{ site.local.prompt }} rsync --help | grep port
-> >      --port=PORT             specify double-colon alternate port number
-> > See http://rsync.samba.org/ for updates, bug reports, and answers
-> > {{ site.local.prompt }} rsync --port=768 test.txt {{ site.remote.user }}@{{ site.remote.login }}:
-> > ```
-> > {: .language-bash}
-> {: .solution}
-{: .challenge}
 
 ## Transferring Files Interactively with FileZilla
 
