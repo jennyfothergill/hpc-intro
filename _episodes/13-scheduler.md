@@ -78,8 +78,11 @@ First open your new script in a text editor:
 > following vim shortcuts:
 > 
 > <kbd>I</kbd> : enter insert mode. This will allow you to type to enter text.
+>
 > <kbd>Esc</kbd> : enter command mode. This will allow you type other commands.
+>
 > (while in command mode) `:w` : save the file.
+>
 > (while in command mode) `:q` : exit vim.
 {: .callout}
 
@@ -255,7 +258,7 @@ later episode of this lesson.
 
 Resource requests are typically binding. If you exceed them, your job will be
 killed. Let's use wall time as an example. We will request 1 minute of
-wall time, and attempt to run a job for two minutes.
+wall time and attempt to run a job for two minutes.
 
 ```
 {{ site.remote.prompt }} cat example-job.sh
@@ -327,7 +330,7 @@ successful.
 
 {% include {{ site.snippets }}/scheduler/terminate-multiple-jobs.snip %}
 
-## Other Types of Jobs
+## Interactive jobs
 
 Up to this point, we've focused on running jobs in batch mode.
 {{ site.sched.name }} also provides the ability to start an interactive session.
@@ -336,9 +339,20 @@ There are very frequently tasks that need to be done interactively. Creating an
 entire job script might be overkill, but the amount of resources required is
 too much for a login node to handle. A good example of this might be building a
 genome index for alignment with a tool like [HISAT2][hisat]. Fortunately, we
-can run these types of tasks as a one-off with `{{ site.sched.interactive }}`.
+can run these types of tasks using `{{ site.sched.interactive }}`, a shortcut
+which opens a bash terminal on a compute node.
 
-{% include {{ site.snippets }}/scheduler/using-nodes-interactively.snip %}
+```
+{{ site.remote.prompt }} {{ site.sched.interactive }}
+```
+{: .language-bash}
+
+You should be presented with a bash prompt. Note that the prompt will likely
+change to reflect your new location, in this case the compute node we are
+logged on. You can also verify this with `hostname`.
+
+When you are done with the interactive job, type `exit` or <kbd>ctrl</kbd> + 
+<kbd>D</kbd> to quit your session.
 
 {% include links.md %}
 
