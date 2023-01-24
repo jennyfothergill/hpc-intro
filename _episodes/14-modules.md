@@ -191,7 +191,7 @@ Let's examine the output of `module avail` more closely.
 > > ## Solution
 > >
 > > ```
-> > {{ site.remote.prompt }} nano python-module.sh
+> > {{ site.remote.prompt }} vim python-module.sh
 > > {{ site.remote.prompt }} cat python-module.sh
 > > ```
 > > {: .language-bash}
@@ -199,7 +199,7 @@ Let's examine the output of `module avail` more closely.
 > > ```
 > > {{ site.remote.bash_shebang }}
 > >
-> > module load {{ site.remote.module_python3 }}
+> > module load python3
 > >
 > > python3 --version
 > > ```
