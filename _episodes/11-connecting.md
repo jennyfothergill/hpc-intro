@@ -1,6 +1,6 @@
 ---
 title: "Connecting to a remote HPC system"
-teaching: 25
+teaching: 15
 exercises: 10
 questions:
 - "How do I log in to a remote HPC system?"
@@ -19,20 +19,18 @@ keypoints:
 ## Secure Connections
 
 The first step in using a cluster is to establish a connection from our laptop
-to the cluster. When we are sitting at a computer (or standing, or holding it
-in our hands or on our wrists), we have come to expect a visual display with
-icons, widgets, and perhaps some windows or applications: a _graphical user
-interface_, or GUI. Since computer clusters are remote resources that we
-connect to over slow or intermittent interfaces (WiFi and VPNs especially), it
-is more practical to use a _command-line interface_, or CLI, to send commands
-as plain-text. If a command returns output, it is printed as plain text as
-well. The commands we run today will not open a window to show graphical
-results.
+to the cluster. When we are sitting at a computer, we have come to expect a 
+visual display with icons, widgets, and perhaps some windows or applications: 
+a _graphical user interface_, or GUI. Since computer clusters are remote 
+resources that we connect to over slow or intermittent interfaces (WiFi 
+and VPNs especially), it is more practical to use a _command-line interface_, 
+or CLI, to send commands as plain-text. If a command returns output, it is 
+printed as plain text as well. The commands we run today will not open a window 
+to show graphical results.
 
-If you have ever opened the Windows Command Prompt or a Terminal, you have
-seen a CLI. If you have already taken The Carpentries' courses on the UNIX
-Shell or Version Control, you have used the CLI on your _local machine_
-extensively. The only leap to be made here is to open a CLI on a _remote machine_,
+If you have already taken The Carpentries' courses on the UNIX Shell or 
+Version Control, you have used the CLI on your _local machine_ extensively. 
+The only leap to be made here is to open a CLI on a _remote machine_,
 while taking some precautions so that other folks on the network can't see (or
 change) the commands you're running or the results the remote machine sends
 back. We will use the Secure SHell protocol (or SSH) to open an encrypted
@@ -52,14 +50,6 @@ something like `ssh userName@hostname`, where the argument is just like an
 email address: the "@" symbol is used to separate the personal ID from the
 address of the remote machine.
 
-When logging in to a laptop, tablet, or other personal device, a username,
-password, or pattern are normally required to prevent unauthorized access. In
-these situations, the likelihood of somebody else intercepting your password is
-low, since logging your keystrokes requires a malicious exploit or physical
-access. For systems like {{ site.remote.host }} running an SSH server, anybody
-on the network can log in, or try to. Since usernames are often public or easy
-to guess, your password is often the weakest link in the security chain.
-
 ## Log In to the Cluster
 
 The [Lesson Setup]({{ page.root }}/setup) provides instructions for installing
@@ -75,7 +65,7 @@ supplied by the instructors.
 ```
 {: .language-bash}
 
-You may be asked for your password. Watch out: the characters you type after
+You will be asked for your password. Watch out: the characters you type after
 the password prompt are not displayed on the screen. Normal output will resume
 once you press `Enter`.
 
