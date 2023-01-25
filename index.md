@@ -6,10 +6,9 @@ root: .
 {% include gh_variables.html %}
 
 This workshop is an introduction to using high-performance computing systems
-effectively. We can't cover every case or give an exhaustive course on parallel
-programming in just two days' teaching time. Instead, this workshop is intended
-to give students a good introduction and overview of the tools available and
-how to use them effectively.
+effectively. We can't cover every case in just four hours' teaching time. 
+Instead, this workshop is intended to give students a good introduction and 
+overview of the tools available and how to use them effectively.
 
 > ## Prerequisites
 >
@@ -26,7 +25,6 @@ By the end of this workshop, students will know how to:
   connect to a cluster.
 * Transfer files onto a cluster.
 * Submit and manage jobs on a cluster using a scheduler.
-* Observe the benefits and limitations of parallel execution.
 
 > ## Getting Started
 >
