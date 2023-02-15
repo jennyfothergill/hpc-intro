@@ -67,24 +67,9 @@ manner. Our shell script will have three parts:
 First open your new script in a text editor:
 
 ```
-{{ site.remote.prompt }} vim example-job.sh
+{{ site.remote.prompt }} nano example-job.sh
 ```
 {: .language-bash}
-
-> ## A note about Vim
->
-> Vim is a command line text editor with lots of useful features. You can start
-> a tutorial by typing `vimtutor` in your terminal. For now though, we'll use the
-> following vim shortcuts:
-> 
-> <kbd>I</kbd> : enter insert mode. This will allow you to type to enter text.
->
-> <kbd>Esc</kbd> : enter command mode. This will allow you type other commands.
->
-> (while in command mode) `:w` : save the file.
->
-> (while in command mode) `:q` : exit vim.
-{: .callout}
 
 ```
 {{ site.remote.bash_shebang }}

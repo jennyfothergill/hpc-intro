@@ -191,7 +191,7 @@ Let's examine the output of `module avail` more closely.
 > > ## Solution
 > >
 > > ```
-> > {{ site.remote.prompt }} vim python-module.sh
+> > {{ site.remote.prompt }} nano python-module.sh
 > > {{ site.remote.prompt }} cat python-module.sh
 > > ```
 > > {: .language-bash}
