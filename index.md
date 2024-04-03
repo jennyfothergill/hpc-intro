@@ -10,6 +10,8 @@ effectively. We can't cover every case in just four hours' teaching time.
 Instead, this workshop is intended to give students a good introduction and 
 overview of the tools available and how to use them effectively.
 
+We will be taking collaborative notes in [this document](https://etherpad.boisestate.edu/p/2024-04-09-hpc-intro).
+
 > ## Prerequisites
 >
 > Command line experience is necessary for this lesson. We recommend the
