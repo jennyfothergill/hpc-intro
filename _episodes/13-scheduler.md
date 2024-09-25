@@ -305,7 +305,7 @@ return of your command prompt indicates that the request to cancel the job was
 successful.
 
 ```
-{{ site.remote.prompt }} {{site.sched.del }} 38759
+{{ site.remote.prompt }} {{site.sched.del }} 212203
 # It might take a minute for the job to disappear from the queue...
 {{ site.remote.prompt }} {{ site.sched.status }} {{ site.sched.flag.user }}
 ```
@@ -336,7 +336,7 @@ You should be presented with a bash prompt. Note that the prompt will likely
 change to reflect your new location, in this case the compute node we are
 logged on. You can also verify this with `hostname`.
 
-When you are done with the interactive job, type `exit` or <kbd>ctrl</kbd> + 
+When you are done with the interactive job, type `exit` or <kbd>ctrl</kbd> +
 <kbd>D</kbd> to quit your session.
 
 {% include links.md %}
