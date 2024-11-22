@@ -19,17 +19,17 @@ keypoints:
 ## Secure Connections
 
 The first step in using a cluster is to establish a connection from our laptop
-to the cluster. When we are sitting at a computer, we have come to expect a 
-visual display with icons, widgets, and perhaps some windows or applications: 
-a _graphical user interface_, or GUI. Since computer clusters are remote 
-resources that we connect to over slow or intermittent interfaces (WiFi 
-and VPNs especially), it is more practical to use a _command-line interface_, 
-or CLI, to send commands as plain-text. If a command returns output, it is 
-printed as plain text as well. The commands we run today will not open a window 
+to the cluster. When we are sitting at a computer, we have come to expect a
+visual display with icons, widgets, and perhaps some windows or applications:
+a _graphical user interface_, or GUI. Since computer clusters are remote
+resources that we connect to over slow or intermittent interfaces (WiFi
+and VPNs especially), it is more practical to use a _command-line interface_,
+or CLI, to send commands as plain-text. If a command returns output, it is
+printed as plain text as well. The commands we run today will not open a window
 to show graphical results.
 
-If you have already taken The Carpentries' courses on the UNIX Shell or 
-Version Control, you have used the CLI on your _local machine_ extensively. 
+If you have already taken The Carpentries' courses on the UNIX Shell or
+Version Control, you have used the CLI on your _local machine_ extensively.
 The only leap to be made here is to open a CLI on a _remote machine_,
 while taking some precautions so that other folks on the network can't see (or
 change) the commands you're running or the results the remote machine sends
@@ -70,12 +70,12 @@ the password prompt are not displayed on the screen. Normal output will resume
 once you press `Enter`.
 
 You may have noticed that the prompt changed when you logged into the remote
-system using the terminal. This change is important because it can help you 
-distinguish on which system the commands you type will be run when you pass 
-them into the terminal. This change is also a small complication that we will 
-need to navigate throughout the workshop. Exactly what is displayed as the 
-prompt (which conventionally ends in `$`) in the terminal when it is connected 
-to the local system and the remote system will typically be different for 
+system using the terminal. This change is important because it can help you
+distinguish on which system the commands you type will be run when you pass
+them into the terminal. This change is also a small complication that we will
+need to navigate throughout the workshop. Exactly what is displayed as the
+prompt (which conventionally ends in `$`) in the terminal when it is connected
+to the local system and the remote system will typically be different for
 every user. We still need to indicate which system we are entering commands
 on though so we will adopt the following convention:
 
@@ -87,7 +87,7 @@ on though so we will adopt the following convention:
 
 ## Changing Your Password
 
-When your account is created, Research Computing assigns you a password. The 
+When your account is created, Research Computing assigns you a password. The
 first thing you should do upon logging in is change it!
 
 You can change your password by entering the `passwd` command as shown below:
@@ -105,12 +105,12 @@ the new password, and finally confirmation of the new password.
 > When prompted, enter a strong password that you will remember. There are two
 > common approaches to this:
 >
-> 1. Create a memorable passphrase with some punctuation, mixed-case and 
->    number-for-letter substitutions, 32 characters or longer. Please note 
+> 1. Create a memorable passphrase with some punctuation, mixed-case and
+>    number-for-letter substitutions, 32 characters or longer. Please note
 >    that passwords are case sensitive.
 > 2. Use a password manager and its built-in password generator with all
 >    character classes, 25 characters or longer. [KeePass][keepass] and
->    [BitWarden][bitwarden] are two good options. This is also a good option 
+>    [BitWarden][bitwarden] are two good options. This is also a good option
 >    for storing passwords.
 {: .callout}
 
@@ -157,8 +157,8 @@ scratch
 ```
 {: .output}
 
-The system administrators have configured your home directory with a link 
-(a shortcut) to a scratch space reserved for you. You can also include 
+The system administrators have configured your home directory with a link
+(a shortcut) to a scratch space reserved for you. You can also include
 hidden files in your directory listing:
 
 ```
