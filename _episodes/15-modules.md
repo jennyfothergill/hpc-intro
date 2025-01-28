@@ -170,11 +170,11 @@ software is loaded.
 Let's examine the output of `module avail` more closely.
 
 ```
-{{ site.remote.prompt }} module avail
+{{ site.remote.prompt }} module avail gcc
 ```
 {: .language-bash}
 
-{% include {{ site.snippets }}/modules/available-modules.snip %}
+{% include {{ site.snippets }}/modules/available-modules-gcc.snip %}
 
 {% include {{ site.snippets }}/modules/wrong-gcc-version.snip %}
 

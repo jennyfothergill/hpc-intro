@@ -6,26 +6,12 @@ If the `python3` command was unavailable, we would see output like
 {: .output}
 
 Note that this wall of text is really a list, with values separated
-by the `:` character. The output is telling us that the `which` command
-searched the following directories for `python3`, without success:
-
-```
-/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin
-/opt/software/slurm/bin
-/usr/local/bin
-/usr/bin
-/usr/local/sbin
-/usr/sbin
-/opt/puppetlabs/bin
-/home/{{site.remote.user}}/.local/bin
-/home/{{site.remote.user}}/bin
-```
-{: .output}
+by the `:` character.
 
 However, in our case we do have an existing `python3` available so we see
 
 ```
-/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin/python3
+/usr/bin/python3
 ```
 {: .output}
 

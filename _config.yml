@@ -69,9 +69,9 @@ episode_order:
   - 12-cluster
   - 13-scheduler
   - 01-break
-  - 14-modules
-  - 15-transferring-files
-  - 18-responsibility
+  - 15-modules
+  - 16-transferring-files
+  - 19-responsibility
 
 #------------------------------------------------------------
 # Values for this lesson
