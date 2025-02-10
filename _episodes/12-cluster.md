@@ -92,23 +92,48 @@ system files and change as you install new software or upgrade your OS.
 > * __Home__ -- a _network filesystem_, data stored here is available
 >   throughout the HPC system, and is backed up periodically; however, users
 >   are limited on how much they can store.
-> * __Scratch__ -- also a _network filesystem_, which has more space available 
->   than the Home directory, but it is not backed up, and should not be used 
+> * __Scratch__ -- also a _network filesystem_, which has more space available
+>   than the Home directory, but it is not backed up, and should not be used
 >   for long term storage.
+{: .callout}
+
+You can also explore the available filesystems using `df` to show **d**isk
+**f**ree space. The `-h` flag renders the sizes in a human-friendly format,
+i.e., GB instead of B. The **t**ype flag `-T` shows what kind of filesystem
+each resource is.
+
+```
+{{ site.remote.prompt }} df -Th
+```
+{: .language-bash}
+
+> ## Different results from `df`
+>
+> * The local filesystems (ext, tmp, xfs, zfs) will depend on whether
+>   you're on the same login node (or compute node, later on).
+> * Networked filesystems (beegfs, cifs, gpfs, nfs, pvfs) will be similar
+>   -- but may include {{ site.remote.user }}, depending on how it
+>   is [mounted][mount].
+{: .discussion}
+
+> ## Shared Filesystems
+>
+> This is an important point to remember: files saved on one node
+> (computer) are often available everywhere on the cluster!
 {: .callout}
 
 ## Nodes
 
 Recall that the individual computers that compose a cluster are called _nodes_.
-On a cluster, there are different types of nodes for different types of tasks. 
-The node where you are right now is called the _login node_. A login node 
+On a cluster, there are different types of nodes for different types of tasks.
+The node where you are right now is called the _login node_. A login node
 serves as the access point to the cluster _for all users_.
 
 As a gateway, the login node should not be used for time-consuming or
-resource-intensive tasks as consuming the cpu or memory of the login node 
-would slow down the cluster for everyone! It is well suited for uploading 
-and downloading files, minor software setup, and submitting jobs to the 
-scheduler. Generally speaking, in these lessons, we will avoid running 
+resource-intensive tasks as consuming the cpu or memory of the login node
+would slow down the cluster for everyone! It is well suited for uploading
+and downloading files, minor software setup, and submitting jobs to the
+scheduler. Generally speaking, in these lessons, we will avoid running
 jobs on the login node.
 
 Who else is logged in to the login node?
@@ -208,60 +233,12 @@ connect to a shared, remote fileserver or cluster of servers.
 > {: .solution}
 {: .challenge}
 
-> ## Explore the Login Node
->
-> Now compare the resources of your computer with those of the login node.
->
-> > ## Solution
-> >
-> > ```
-> > {{ site.local.prompt }} ssh {{ site.remote.user }}@{{ site.remote.login }}
-> > {{ site.remote.prompt }} nproc --all
-> > {{ site.remote.prompt }} free -h
-> > ```
-> > {: .language-bash}
-> >
-> > You can get more information about the processors using `lscpu`,
-> > and a lot of detail about the memory by reading the file `/proc/meminfo`:
-> >
-> > ```
-> > {{ site.remote.prompt }} less /proc/meminfo
-> > ```
-> > {: .language-bash}
-> >
-> > You can also explore the available filesystems using `df` to show **d**isk
-> > **f**ree space. The `-h` flag renders the sizes in a human-friendly format,
-> > i.e., GB instead of B. The **t**ype flag `-T` shows what kind of filesystem
-> > each resource is.
-> >
-> > ```
-> > {{ site.remote.prompt }} df -Th
-> > ```
-> > {: .language-bash}
-> >
-> > > ## Different results from `df`
-> > >
-> > > * The local filesystems (ext, tmp, xfs, zfs) will depend on whether
-> > >   you're on the same login node (or compute node, later on).
-> > > * Networked filesystems (beegfs, cifs, gpfs, nfs, pvfs) will be similar
-> > >   -- but may include {{ site.remote.user }}, depending on how it
-> > >   is [mounted][mount].
-> > {: .discussion}
-> >
-> > > ## Shared Filesystems
-> > >
-> > > This is an important point to remember: files saved on one node
-> > > (computer) are often available everywhere on the cluster!
-> > {: .callout}
-> {: .solution}
-{: .challenge}
-
 {% include {{ site.snippets }}/cluster/specific-node-info.snip %}
 
-> ## Compare Your Computer, the Login Node and the Compute Node
+> ## Compare Your Computer and the Compute Node
 >
 > Compare your laptop's number of processors and memory with the numbers you
-> see on the cluster login node and compute node. What implications do
+> see on the cluster compute node. What implications do
 > you think the differences might have on running your research work on the
 > different systems and nodes?
 >
