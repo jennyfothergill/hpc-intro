@@ -50,24 +50,23 @@ something like `ssh userName@hostname`, where the argument is just like an
 email address: the "@" symbol is used to separate the personal ID from the
 address of the remote machine.
 
-## Log In to the Cluster
+## Connect to the Cluster
+
+After getting your account, please navigate to
+[ondemand.boisestate.edu][ondemand], choose your university as the identity
+provider, and log in with your university credentials.
+
+From here you can acccess the shell, interactive apps like Jupyter and Rstudio,
+and transfer files.
+
+## Logging in with a Terminal Application
 
 The [Lesson Setup]({{ page.root }}/setup) provides instructions for installing
 a shell application with SSH. If you have not done so already, please open that
 shell application with a Unix-like command line interface to your system.
 
-Go ahead and open your terminal or graphical SSH client, then log in to the
-cluster. Replace `{{ site.remote.user }}` with your username or the one
-supplied by the instructors.
-
-```
-{{ site.local.prompt }} ssh {{ site.remote.user }}@{{ site.remote.login }}
-```
-{: .language-bash}
-
-You will be asked for your password. Watch out: the characters you type after
-the password prompt are not displayed on the screen. Normal output will resume
-once you press `Enter`.
+To log in to Borah via ssh, we'll need to set up ssh keys according to the
+follwing documentation: [Logging in Documentation][logging in]
 
 You may have noticed that the prompt changed when you logged into the remote
 system using the terminal. This change is important because it can help you
@@ -84,35 +83,6 @@ on though so we will adopt the following convention:
 * `{{ site.remote.prompt }}` when the command is to be entered on a
   terminal connected to the remote system
 * `$` when it really doesn't matter which system the terminal is connected to.
-
-## Changing Your Password
-
-When your account is created, Research Computing assigns you a password. The
-first thing you should do upon logging in is change it!
-
-You can change your password by entering the `passwd` command as shown below:
-
-```
-{{ site.remote.prompt }} passwd
-```
-{: .language-bash}
-
-After entering the command, you will be prompted for your current password,
-the new password, and finally confirmation of the new password.
-
-> ## Considerations for Passwords
->
-> When prompted, enter a strong password that you will remember. There are two
-> common approaches to this:
->
-> 1. Create a memorable passphrase with some punctuation, mixed-case and
->    number-for-letter substitutions, 32 characters or longer. Please note
->    that passwords are case sensitive.
-> 2. Use a password manager and its built-in password generator with all
->    character classes, 25 characters or longer. [KeePass][keepass] and
->    [BitWarden][bitwarden] are two good options. This is also a good option
->    for storing passwords.
-{: .callout}
 
 ## Looking Around Your Remote Home
 
@@ -179,13 +149,5 @@ keys and a record of authorized connections.
 
 {% include links.md %}
 
-[bitwarden]: https://bitwarden.com
-[fshs]: https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
-[gh-ssh]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
-[keepass]: https://keepass.info
-[putty-gen]: https://tartarus.org/~simon/putty-prerel-snapshots/htmldoc/Chapter8.html#pubkey-puttygen
-[putty-agent]: https://tartarus.org/~simon/putty-prerel-snapshots/htmldoc/Chapter9.html#pageant
-[ssh-agent]: https://www.ssh.com/academy/ssh/agent
-[ssh-flags]: https://stribika.github.io/2015/01/04/secure-secure-shell.html
-[wiki-rsa]: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
-[wiki-dsa]: https://en.wikipedia.org/wiki/EdDSA
+[ondemand]: https://ondemand.boisestate.edu
+[logging in]: https://bsu-docs.readthedocs.io/en/latest/logging_in
