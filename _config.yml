@@ -71,6 +71,7 @@ episode_order:
   - 01-break
   - 15-modules
   - 16-transferring-files
+  - 17-parallel
   - 19-responsibility
 
 #------------------------------------------------------------
