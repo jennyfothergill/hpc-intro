@@ -336,7 +336,10 @@ logged on. You can also verify this with `hostname`.
 When you are done with the interactive job, type `exit` or <kbd>ctrl</kbd> +
 <kbd>D</kbd> to quit your session.
 
+You can also use many of the interactive apps on
+[ondemand.boisestate.edu][ondemand].
+
 {% include links.md %}
 
-[fshs]: https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
 [hisat]: https://daehwankimlab.github.io/hisat2/
+[ondemand]: https://ondemand.boisestate.edu
