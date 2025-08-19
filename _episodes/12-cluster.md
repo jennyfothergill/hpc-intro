@@ -267,3 +267,5 @@ scheduler and use it to start running our scripts and programs!
 
 [fshs]: https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
 [mount]: https://en.wikipedia.org/wiki/Mount_(computing)
+
+{% include new-window-fix.html %}

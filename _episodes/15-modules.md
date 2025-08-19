@@ -213,3 +213,5 @@ Let's examine the output of `module avail` more closely.
 {: .challenge}
 
 {% include links.md %}
+
+{% include new-window-fix.html %}

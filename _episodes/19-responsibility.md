@@ -282,3 +282,5 @@ talked about data transfer earlier.
 > >    latency (making the most of your time and network connection).
 > {: .solution}
 {: .challenge}
+
+{% include new-window-fix.html %}

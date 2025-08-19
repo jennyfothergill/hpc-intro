@@ -462,3 +462,5 @@ machine.
 
 [git-swc]: https://swcarpentry.github.io/git-novice/
 [rsync]: https://rsync.samba.org/
+
+{% include new-window-fix.html %}

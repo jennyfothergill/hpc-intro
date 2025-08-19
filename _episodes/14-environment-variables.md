@@ -256,3 +256,5 @@ bookkeeping on what the value of `PATH` (and other important environment
 variables) is or should be.
 
 {% include links.md %}
+
+{% include new-window-fix.html %}

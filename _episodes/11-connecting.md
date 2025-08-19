@@ -151,3 +151,5 @@ keys and a record of authorized connections.
 
 [ondemand]: https://ondemand.boisestate.edu
 [logging in]: https://bsu-docs.readthedocs.io/en/latest/logging_in
+
+{% include new-window-fix.html %}

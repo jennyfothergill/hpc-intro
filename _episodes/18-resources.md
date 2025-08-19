@@ -120,3 +120,5 @@ get your job dispatched earlier.
 {: .challenge}
 
 {% include links.md %}
+
+{% include new-window-fix.html %}

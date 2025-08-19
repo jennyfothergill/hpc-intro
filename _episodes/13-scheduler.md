@@ -343,3 +343,5 @@ You can also use many of the interactive apps on
 
 [hisat]: https://daehwankimlab.github.io/hisat2/
 [ondemand]: https://ondemand.boisestate.edu
+
+{% include new-window-fix.html %}
