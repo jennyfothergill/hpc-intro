@@ -2,7 +2,7 @@
 title: "Connecting to a remote HPC system"
 teaching: 10
 exercises: 5
-questions: 5
+questions:
 - "How do I log in to a remote HPC system?"
 objectives:
 - "Configure secure access to a remote HPC system."

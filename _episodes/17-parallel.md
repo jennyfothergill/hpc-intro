@@ -1,7 +1,7 @@
 ---
 title: "Using resources effectively"
-teaching: 30
-exercises: 60
+teaching: 20
+exercises: 25
 questions:
 - "What are the different types of parallelism?"
 - "How do we execute a task in parallel?"
