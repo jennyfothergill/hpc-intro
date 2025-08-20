@@ -25,13 +25,6 @@ keypoints:
 
 ## Look Around the Remote System
 
-If you have not already connected to {{ site.remote.name }}, please do so now:
-
-```
-{{ site.local.prompt }}  ssh {{ site.remote.user }}@{{ site.remote.login }}
-```
-{: .language-bash}
-
 Take a look at your home directory on the remote system:
 
 ```

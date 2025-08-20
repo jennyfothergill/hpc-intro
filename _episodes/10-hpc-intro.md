@@ -1,7 +1,7 @@
 ---
 title: "Why use a Cluster?"
-teaching: 15
-exercises: 5
+teaching: 10
+exercises: 0
 questions:
 - "Why would I be interested in High Performance Computing (HPC)?"
 - "What can I expect to learn from this course?"
