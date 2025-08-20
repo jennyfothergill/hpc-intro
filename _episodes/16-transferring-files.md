@@ -8,8 +8,8 @@ objectives:
 - "Transfer files to and from a computing cluster."
 keypoints:
 - "`wget` and `curl -O` download a file from the internet."
-- "`scp` and `rsync` transfer files to and from your computer."
-- "You can use an SFTP client like FileZilla to transfer files through a GUI."
+- "`scp` to transfer files to and from your computer."
+- "You can use the file browser in OnDemand to view and transfer files."
 ---
 
 Performing work on a remote computer is not very useful if we cannot get files
@@ -27,36 +27,24 @@ quick way to download datasets or source code. The syntax for these commands is
 * `wget [-O new_name] https://some/link/to/a/file`
 * `curl [-o new_name] https://some/link/to/a/file`
 
-Try it out by downloading some material we'll use later on, from a terminal on
-your local machine, using the URL of the current codebase:
+Try it out by downloading some material we'll use later on (a
+[wordlist][wordlist] from John Lawler at University of Michigan) from the
+following url:
 
-<https://github.com/hpc-carpentry/amdahl/tarball/main>
+<https://websites.umich.edu/~jlawler/wordlist>
 
-> ## Download the "Tarball"
->
-> The word "tarball" in the above URL refers to a compressed archive format
-> commonly used on Linux, which is the operating system the majority of HPC
-> cluster machines run.
-> A tarball is a lot like a `.zip` file.
-> The actual file extension is `.tar.gz`, which reflects the two-stage process
-> used to create the file:
-> the files or folders are merged into a single file using `tar`, which is then
-> compressed using `gzip`, so the file extension is "tar-dot-g-z."
-> That's a mouthful, so people often say "the _xyz_ tarball" instead.
->
-> You may also see the extension `.tgz`, which is just an abbreviation of
-> `.tar.gz`.
+> ## Download the wordlist
 >
 > By default, `curl` and `wget` download files to the same name as the URL:
-> in this case, `main`.
-> Use one of the above commands to save the tarball as `amdahl.tar.gz`.
+> in this case, `wordlist`.
+> Use one of the above commands to save the file as `wordlist.txt`.
 >
 > > ## `wget` and `curl` Commands
 > >
 > > ```
-> > {{ site.local.prompt }} wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
+> > {{ site.remote.prompt }} wget -0 wordlist.txt https://websites.umich.edu/~jlawler/wordlist
 > > # or
-> > {{ site.local.prompt }} curl -o amdahl.tar.gz -L https://github.com/hpc-carpentry/amdahl/tarball/main
+> > {{ site.remote.prompt }} curl -o wordlist.txt -L https://websites.umich.edu/~jlawler/wordlist
 > > ```
 > > {: .language-bash}
 > > The `-L` option to `curl` tells it to follow URL redirects (which `wget` does by default).
@@ -69,6 +57,115 @@ After downloading the file, use `ls` to see it in your working directory:
 {{ site.local.prompt }} ls
 ```
 {: .language-bash}
+
+## Using the OnDemand File Browser
+
+The ondemand "Files" tab provides a graphical interface to all your files on
+Borah.
+
+{% include figure.html max-width="75%" caption=""
+   file="/fig/ood-dash-files.png"
+   alt="Ondemand dashboard highlighting the Files app" %}
+
+Here you can edit, upload, download, etc.
+
+## Transferring Single Files and Folders With `scp`
+
+To copy a single file to or from the cluster from our local computer, we can
+use `scp` ("secure copy"). The syntax can be a little complex for new users,
+but we'll break it down. The `scp` command is a relative of the `ssh` command
+we used to access the system, and can use the same public-key authentication
+mechanism.
+
+To _upload to_ another computer, the template command is
+
+```
+{{ site.local.prompt }} scp local_file {{ site.remote.user }}@{{ site.remote.login }}:remote_destination
+```
+{: .language-bash}
+
+in which `@` and `:` are field separators and `remote_destination` is a path
+relative to your remote home directory, or a new filename if you wish to change
+it, or both a relative path _and_ a new filename.
+If you don't have a specific folder in mind you can omit the
+`remote_destination` and the file will be copied to your home directory on the
+remote computer (with its original name).
+If you include a `remote_destination`, note that `scp` interprets this the same
+way `cp` does when making local copies:
+if it exists and is a folder, the file is copied inside the folder; if it
+exists and is a file, the file is overwritten with the contents of
+`local_file`; if it does not exist, it is assumed to be a destination filename
+for `local_file`.
+
+Upload a file to your remote home directory like so:
+
+```
+{{ site.local.prompt }} scp myfile {{ site.remote.user }}@{{ site.remote.login }}:
+```
+{: .language-bash}
+
+## Transferring a Directory
+
+To transfer an entire directory, we add the `-r` flag for "**r**ecursive":
+copy the item specified, and every item below it, and every item below those...
+until it reaches the bottom of the directory tree rooted at the folder name you
+provided.
+
+```
+{{ site.local.prompt }} scp -r amdahl {{ site.remote.user }}@{{ site.remote.login }}:
+```
+{: .language-bash}
+
+> ## Caution
+>
+> For a large directory -- either in size or number of files --
+> copying with `-r` can take a long time to complete.
+{: .callout}
+
+When using `scp`, you may have noticed that a `:` _always_ follows the remote
+computer name.
+A string _after_ the `:` specifies the remote directory you wish to transfer
+the file or folder to, including a new name if you wish to rename the remote
+material.
+If you leave this field blank, `scp` defaults to your home directory and the
+name of the local material to be transferred.
+
+On Linux computers, `/` is the separator in file or directory paths.
+A path starting with a `/` is called _absolute_, since there can be nothing
+above the root `/`.
+A path that does not start with `/` is called _relative_, since it is not
+anchored to the root.
+
+If you want to upload a file to a location inside your home directory --
+which is often the case -- then you don't need a _leading_ `/`. After the `:`,
+you can type the destination path relative to your home directory.
+If your home directory _is_ the destination, you can leave the destination
+field blank, or type `~` -- the shorthand for your home directory -- for
+completeness.
+
+With `scp`, a trailing slash on the target directory is optional, and has no effect.
+
+> ## Working with Windows
+>
+> When you transfer text files from a Windows system to a Unix system (Mac,
+> Linux, BSD, Solaris, etc.) this can cause problems. Windows encodes its files
+> slightly different than Unix, and adds an extra character to every line.
+>
+> On a Unix system, every line in a file ends with a `\n` (newline). On
+> Windows, every line in a file ends with a `\r\n` (carriage return + newline).
+> This causes problems sometimes.
+>
+> Though most modern programming languages and software handles this correctly,
+> in some rare instances, you may run into an issue. The solution is to convert
+> a file from Windows to Unix encoding with the `dos2unix` command.
+>
+> You can identify if a file has Windows line endings with `cat -A filename`. A
+> file with Windows line endings will have `^M$` at the end of every line. A
+> file with Unix line endings will have `$` at the end of a line.
+>
+> To convert the file, just run `dos2unix filename`. (Conversely, to convert
+> back to Windows format, you can run `unix2dos filename`.)
+{: .callout}
 
 ## Archiving Files
 
@@ -90,12 +187,9 @@ optionally, compress the result.
 Let's look at the file we downloaded from the lesson site, `amdahl.tar.gz`.
 
 The `.gz` part stands for _gzip_, which is a compression library.
-It's common (but not necessary!) that this kind of file can be interpreted by
-reading its name: it appears somebody took files and folders relating to
-something called "amdahl," wrapped them all up into a single file with `tar`,
-then compressed that archive with `gzip` to save space.
 
-Let's see if that is the case, _without_ unpacking the file.
+To view the contents of a tarfile, _without_ unpacking the file, we can use the
+`-t` flag.
 `tar` prints the "**t**able of contents" with the `-t` flag, for the file
 specified with the `-f` flag followed by the filename.
 Note that you can concatenate the two flags: writing `-t -f` is interchangeable
@@ -103,8 +197,16 @@ with writing `-tf` together.
 However, the argument following `-f` must be a filename, so writing `-ft` will
 _not_ work.
 
+First download the example tarfile:
 ```
-{{ site.local.prompt }} tar -tf amdahl.tar.gz
+{{ site.remote.prompt }} wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
+# or
+{{ site.remote.prompt }} curl -o amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
+```
+{: .language-bash}
+Then list the contents:
+```
+{{ site.remote.prompt }} tar -tf amdahl.tar.gz
 hpc-carpentry-amdahl-46c9b4b/
 hpc-carpentry-amdahl-46c9b4b/.github/
 hpc-carpentry-amdahl-46c9b4b/.github/workflows/
@@ -138,7 +240,7 @@ Now let's unpack the archive. We'll run `tar` with a few common flags:
 > directory named "amdahl" using `tar`.
 >
 > ```
-> {{ site.local.prompt }} tar -xvzf amdahl.tar.gz
+> {{ site.remote.prompt }} tar -xvzf amdahl.tar.gz
 > ```
 > {: .language-bash}
 >
@@ -169,7 +271,7 @@ The folder has an unfortunate name, so let's change that to something more
 convenient.
 
 ```
-{{ site.local.prompt }} mv hpc-carpentry-amdahl-46c9b4b amdahl
+{{ site.remote.prompt }} mv hpc-carpentry-amdahl-46c9b4b amdahl
 ```
 {: .language-bash}
 
@@ -218,249 +320,11 @@ That would mean adding the new `amdahl` folder to the _existing_ folder
 (`hpc-carpentry-amdahl-46c9b4b`) inside the tarball, doubling the size of the
 archive!
 
-> ## Working with Windows
->
-> When you transfer text files from a Windows system to a Unix system (Mac,
-> Linux, BSD, Solaris, etc.) this can cause problems. Windows encodes its files
-> slightly different than Unix, and adds an extra character to every line.
->
-> On a Unix system, every line in a file ends with a `\n` (newline). On
-> Windows, every line in a file ends with a `\r\n` (carriage return + newline).
-> This causes problems sometimes.
->
-> Though most modern programming languages and software handles this correctly,
-> in some rare instances, you may run into an issue. The solution is to convert
-> a file from Windows to Unix encoding with the `dos2unix` command.
->
-> You can identify if a file has Windows line endings with `cat -A filename`. A
-> file with Windows line endings will have `^M$` at the end of every line. A
-> file with Unix line endings will have `$` at the end of a line.
->
-> To convert the file, just run `dos2unix filename`. (Conversely, to convert
-> back to Windows format, you can run `unix2dos filename`.)
-{: .callout}
-
-## Transferring Single Files and Folders With `scp`
-
-To copy a single file to or from the cluster, we can use `scp` ("secure copy").
-The syntax can be a little complex for new users, but we'll break it down.
-The `scp` command is a relative of the `ssh` command we used to
-access the system, and can use the same public-key authentication
-mechanism.
-
-To _upload to_ another computer, the template command is
-
-```
-{{ site.local.prompt }} scp local_file {{ site.remote.user }}@{{ site.remote.login }}:remote_destination
-```
-{: .language-bash}
-
-in which `@` and `:` are field separators and `remote_destination` is a path
-relative to your remote home directory, or a new filename if you wish to change
-it, or both a relative path _and_ a new filename.
-If you don't have a specific folder in mind you can omit the
-`remote_destination` and the file will be copied to your home directory on the
-remote computer (with its original name).
-If you include a `remote_destination`, note that `scp` interprets this the same
-way `cp` does when making local copies:
-if it exists and is a folder, the file is copied inside the folder; if it
-exists and is a file, the file is overwritten with the contents of
-`local_file`; if it does not exist, it is assumed to be a destination filename
-for `local_file`.
-
-Upload the lesson material to your remote home directory like so:
-
-```
-{{ site.local.prompt }} scp amdahl.tar.gz {{ site.remote.user }}@{{ site.remote.login }}:
-```
-{: .language-bash}
-
-> ## Why Not Download on {{ site.remote.name }} Directly?
->
-> Most computer clusters are protected from the open internet by a _firewall_.
-> For enhanced security, some are configured to allow traffic _inbound_, but
-> not _outbound_.
-> This means that an authenticated user can send a file to a cluster machine,
-> but a cluster machine cannot retrieve files from a user's machine or the
-> open Internet.
->
-> Try downloading the file directly. Note that it may well fail, and that's
-> OK!
->
-> > ## Commands
-> >
-> > ```
-> > {{ site.local.prompt }} ssh {{ site.remote.user }}@{{ site.remote.login }}
-> > {{ site.remote.prompt }} wget -O amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
-> > # or
-> > {{ site.remote.prompt }} curl -o amdahl.tar.gz https://github.com/hpc-carpentry/amdahl/tarball/main
-> > ```
-> > {: .language-bash}
-> {: .solution}
->
-> Did it work? If not, what does the terminal output tell you about what
-> happened?
-{: .challenge}
-
-## Transferring a Directory
-
-To transfer an entire directory, we add the `-r` flag for "**r**ecursive":
-copy the item specified, and every item below it, and every item below those...
-until it reaches the bottom of the directory tree rooted at the folder name you
-provided.
-
-```
-{{ site.local.prompt }} scp -r amdahl {{ site.remote.user }}@{{ site.remote.login }}:
-```
-{: .language-bash}
-
-> ## Caution
->
-> For a large directory -- either in size or number of files --
-> copying with `-r` can take a long time to complete.
-{: .callout}
-
-When using `scp`, you may have noticed that a `:` _always_ follows the remote
-computer name.
-A string _after_ the `:` specifies the remote directory you wish to transfer
-the file or folder to, including a new name if you wish to rename the remote
-material.
-If you leave this field blank, `scp` defaults to your home directory and the
-name of the local material to be transferred.
-
-On Linux computers, `/` is the separator in file or directory paths.
-A path starting with a `/` is called _absolute_, since there can be nothing
-above the root `/`.
-A path that does not start with `/` is called _relative_, since it is not
-anchored to the root.
-
-If you want to upload a file to a location inside your home directory --
-which is often the case -- then you don't need a _leading_ `/`. After the `:`,
-you can type the destination path relative to your home directory.
-If your home directory _is_ the destination, you can leave the destination
-field blank, or type `~` -- the shorthand for your home directory -- for
-completeness.
-
-With `scp`, a trailing slash on the target directory is optional, and has no effect.
-A trailing slash on a source directory is important for other commands, like `rsync`.
-
-> ## A Note on `rsync`
->
-> As you gain experience with transferring files, you may find the `scp`
-> command limiting. The [rsync] utility provides
-> advanced features for file transfer and is typically faster compared to both
-> `scp` and `sftp` (see below). It is especially useful for transferring large
-> and/or many files and for synchronizing folder contents between computers.
->
-> The syntax is similar to `scp`. To transfer _to_ another computer with
-> commonly used options:
->
-> ```
-> {{ site.local.prompt }} rsync -avP amdahl.tar.gz {{ site.remote.user }}@{{ site.remote.login }}:
-> ```
-> {: .language-bash}
->
-> The options are:
->
-> * `-a` (**a**rchive) to preserve file timestamps, permissions, and folders,
->    among other things; implies recursion
-> * `-v` (**v**erbose) to get verbose output to help monitor the transfer
-> * `-P` (partial/progress) to preserve partially transferred files in case
->   of an interruption and also displays the progress of the transfer.
->
-> To recursively copy a directory, we can use the same options:
->
-> ```
-> {{ site.local.prompt }} rsync -avP amdahl {{ site.remote.user }}@{{ site.remote.login }}:~/
-> ```
-> {: .language-bash}
->
-> As written, this will place the local directory and its contents under your
-> home directory on the remote system. If a trailing slash is added to the
-> source, a new directory corresponding to the transferred directory
-> will not be created, and the contents of the source directory will be
-> copied directly into the destination directory.
->
-> To download a file, we simply change the source and destination:
->
-> ```
-> {{ site.local.prompt }} rsync -avP {{ site.remote.user }}@{{ site.remote.login }}:amdahl ./
-> ```
-> {: .language-bash}
-{: .callout}
-
-File transfers using both `scp` and `rsync` use SSH to encrypt data sent through
-the network. So, if you can connect via SSH, you will be able to transfer
-files. By default, SSH uses network port 22. If a custom SSH port is in use,
-you will have to specify it using the appropriate flag, often `-p`, `-P`, or
-`--port`. Check `--help` or the `man` page if you're unsure.
-
-> ## Change the Rsync Port
->
-> Say we have to connect `rsync` through port 768 instead of 22. How would we
-> modify this command?
->
-> ```
-> {{ site.local.prompt }} rsync amdahl.tar.gz {{ site.remote.user }}@{{ site.remote.login }}:
-> ```
-> {: .language-bash}
->
-> _Hint:_ check the `man` page or "help" for `rsync`.
->
-> > ## Solution
-> >
-> > ```
-> > {{ site.local.prompt }} man rsync
-> > {{ site.local.prompt }} rsync --help | grep port
-> >      --port=PORT             specify double-colon alternate port number
-> > See http://rsync.samba.org/ for updates, bug reports, and answers
-> > {{ site.local.prompt }} rsync --port=768 amdahl.tar.gz {{ site.remote.user }}@{{ site.remote.login }}:
-> > ```
-> > {: .language-bash}
-> >
-> > (Note that this command will fail, as the correct port in this case is the
-> > default: 22.)
-> {: .solution}
-{: .challenge}
-
-## Transferring Files Interactively with FileZilla
-
-FileZilla is a cross-platform client for downloading and uploading files to and
-from a remote computer. It is absolutely fool-proof and always works quite
-well. It uses the `sftp` protocol. You can read more about using the `sftp`
-protocol in the command line in the
-[lesson discussion]({{ site.baseurl }}{% link _extras/discuss.md %}).
-
-Download and install the FileZilla client from <https://filezilla-project.org>.
-After installing and opening the program, you should end up with a window with
-a file browser of your local system on the left hand side of the screen. When
-you connect to the cluster, your cluster files will appear on the right hand
-side.
-
-To connect to the cluster, we'll just need to enter our credentials at the top
-of the screen:
-
-* Host: `sftp://{{ site.remote.login }}`
-* User: Your cluster username
-* Password: Your cluster password
-* Port: (leave blank to use the default port)
-
-Hit "Quickconnect" to connect. You should see your remote files appear on the
-right hand side of the screen. You can drag-and-drop files between the left
-(local) and right (remote) sides of the screen to transfer files.
-
-{% include {{ site.snippets }}/transferring-files/filezilla-ssh-tunnel-instructions.snip %}
-
-Finally, if you need to move large files (typically larger than a gigabyte)
-from one remote computer to another remote computer, SSH in to the computer
-hosting the files and use `scp` or `rsync` to transfer over to the other. This
-will be more efficient than using FileZilla (or related applications) that
-would copy from the source to your local machine, then to the destination
-machine.
 
 {% include links.md %}
 
 [git-swc]: https://swcarpentry.github.io/git-novice/
 [rsync]: https://rsync.samba.org/
+[wordlist]: https://websites.umich.edu/~jlawler/wordlist.html
 
 {% include new-window-fix.html %}

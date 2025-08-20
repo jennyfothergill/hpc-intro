@@ -48,19 +48,7 @@ William Shakespeare.
 We don't have infinite time or resources, but we can simulate this problem with
 A LOT of monkeys.
 
-Make a directory in your home or scratch:
-```
-{{ site.remote.prompt }} mkdir monkeys
-```
-{: .language-bash}
-
-Download [wordlist][wordlist] from John Lawler at University of Michigan:
-```
-{{ site.remote.prompt }} wget https://websites.umich.edu/~jlawler/wordlist
-```
-{: .language-bash}
-
-Create the following script to simulate a "monkey":
+Create the following script to simulate a "monkey". Let's name this monkey.py:
 ```
 #!/usr/bin/env python3
 
@@ -70,7 +58,7 @@ import string
 nwords = 100
 minlen = 2
 maxlen = 10
-dictionaryfile = "wordlist"
+dictionaryfile = "wordlist.txt"
 
 # Generate random string of character of certain length
 def randomchars(length):
@@ -134,7 +122,7 @@ reverse-chronological order: newest first. What was the output?
 > ```
 > {: .language-bash}
 > ```
-> slurm-2114623.out  monkey-job.sh   monkey.py  wordlist
+> slurm-2114623.out  monkey-job.sh   monkey.py  wordlist.txt
 > ```
 > {: .output}
 > ```
@@ -265,7 +253,6 @@ Performance Computing][cornell].
 
 [monkeys]: https://en.wikipedia.org/wiki/Infinite_monkey_theorem
 [embarrassingly-parallel]: https://en.wikipedia.org/wiki/Embarrassingly_parallel
-[wordlist]: https://websites.umich.edu/~jlawler/wordlist.html
 [cornell]: https://cvw.cac.cornell.edu/parallel/intro/index
 [parallel-novice]: http://www.hpc-carpentry.org/hpc-parallel-novice/
 [jobarray]: https://slurm.schedmd.com/job_array.html
