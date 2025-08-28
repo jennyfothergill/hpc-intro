@@ -212,8 +212,8 @@ about more complex types of parallelism.
 > > a task to and collect output from each worker. In the puzzle example,
 > > people seated at different tables must have someone bring them pieces, take
 > > the pieces back, and organize the partial results. In the HPC world,
-> > distributed memory parallelism is used across multiple nodes using a
-> > framework called MPI over a specialized network.
+> > a framework called MPI allows workers across multiple nodes to communicate
+> > over a specialized network.
 > {: .solution}
 {: .challenge}
 
